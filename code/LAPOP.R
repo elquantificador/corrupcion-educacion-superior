@@ -27,7 +27,7 @@ dm <- svydesign(ids = ~ upm,
           data = df)
 
 
-# Tabulación con pesos de muestra
+# Tabulación con pesos de muestra exc16
 exc16_tab <- svyby(formula = ~exc16, 
                    by = ~year, 
                    design = dm,
@@ -36,7 +36,7 @@ exc16_tab <- svyby(formula = ~exc16,
                    keep.names = F)
 
 # Theme
-theme_article_pride <-
+theme_article_educacion <-
   theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
         plot.title = element_text(color = "grey20"),
@@ -67,7 +67,7 @@ graph1 <-
        subtitle = 'En los últimos 12 meses, ¿tuvo que pagar alguna coima/soborno en la escuela o colegio?',
        caption = str_wrap(caption_graph1, 175)) +
   guides(fill = F) +
-  theme_article_pride +
+  theme_article_educacion +
   theme(plot.title = element_text(face = 'bold'),
         plot.caption = element_text(size = 8)); graph1
 
@@ -77,10 +77,44 @@ ggsave("figures/grafico_pago_coimas.png",plot = graph1,
        height = 6, 
        dpi = 1200)
 
+# Tabulación con pesos de muestra ctol
+ctol_tab <- svyby(formula = ~ctol, 
+                   by = ~year, 
+                   design = dm,
+                   FUN = svymean,
+                   na.rm = T,
+                   keep.names = F)
 # Graph de ctol
-ggplot(df, aes(x = as.factor(year), y = ctol)) + geom_col()
+caption_graph2<-
+  'Las cifras representan el % de personas que consideran que a veces el pago de sobornos es justificable, donde 0 significa que no justifica y 1 que sí lo hace. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. 
+  Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
+graph2 <- 
+  ggplot(ctol_tab, aes(x = as.factor(year), y = ctol, fill = as.factor(year))) + 
+  geom_col(fill = "#647A8F",
+           linewidth = 0.7,
+           width = 0.5) + 
+  geom_errorbar(aes(ymin = ctol - 1.96*se,
+                    ymax = ctol + 1.96*se),
+                width = 0.3)+
+  geom_text(aes(label = scales::percent(ctol, accuracy = 0.1)),
+            size = 4,
+            vjust = -4) +
+  scale_y_continuous(limits = c(0, 0.3)) +
+  labs(x = '',
+       y = '',
+       title = 'Pagar coimas es justificable',
+       subtitle = '¿Cree que como están las cosas a veces se justifica pagar una coima/soborno?',
+       caption = str_wrap(caption_graph2, 175)) +
+  guides(fill = F) +
+  theme_article_educacion +
+  theme(plot.title = element_text(face = 'bold'),
+        plot.caption = element_text(size = 8)); graph2
 
-
+ggsave("figures/grafico_pago_coimas_justificable.png",plot = graph2, 
+       device = "png", 
+       width = 10, 
+       height = 6, 
+       dpi = 1200)
 
 
