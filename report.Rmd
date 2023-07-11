@@ -1,0 +1,43 @@
+---
+title: 'Corrupción y acceso a la educación superior pública en el Ecuador'
+output:
+  html_document: default
+  word_document: default
+date: "2023-07-10"
+bibliography: refs.bib
+csl: style.csl
+---
+
+```{r setup, include = FALSE}
+# Opciones de chunks
+knitr::opts_chunk$set(echo = F)
+```
+
+La manera en la que los jóvenes ecuatorianos pueden acceder a universidades públicas es, históricamente, bastante confusa. En los últimos 15 años, ha habido varios cambios y ajustes en cuanto a su procedimiento, junto con una ola de escándalos y, por supuesto, corrupción.
+
+# Un poco de historia
+
+En el presente, la mayoría de jóvenes adultos del país se sometieron al examen Ser Bachiller, sin embargo, este sistema es relativamente nuevo. A partir de la movilización estudiantil de 1969, la educación superior fue de libre acceso para los estudiantes ecuatorianos. Esta situación tomaría un drástico cambio con el gobierno de Rafael Correa. Con el fin de generar igualdad de oportunidades entre los jóvenes ecuatorianos de distintos contextos socioculturales para poder ingresar a universidades públicas, la Ley de Educación Superior estableció el Examen Nacional de Educación Superior (ENES) regulado por el Sistema de Nivelación y Admisión (SNNA). Este primer paso en el nuevo sistema quería lograr “superar la corrupción de acceso a la Educación Superior para la obtención de cupos” (Senescyt, 2013, p. 6). 
+
+Pese a que estuvo en vigencia desde el 2011, no sería hasta el 2014 que el ENES tomaría un carácter obligatorio y universal. Al igual que el examen Ser Bachiller, la puntuación de esta evaluación determinaba la asignación de un cupo en instituciones educativas públicas. En el 2017 hubo un nuevo cambio, pues se plantea la creación de un examen unificado, el cual funcionaría como una evaluación obligatoria para graduarse del colegio. De la misma manera, también otorgaba acceso al sistema de educación superior dependiendo de la puntuación obtenida (Torres, 2020). El último gran cambio que se realizó fue la eliminación del examen de la SENESCYT (llamada prueba Transformar por el presidente Guillermo Lasso) el año pasado, significando que el acceso a universidades públicas ahora depende de las mismas instituciones.  Pero, ¿cómo afectaron estas constantes modificaciones a la corrupción en el acceso a la educación superior pública? 
+
+Para responder esta pregunta podemos usar los resultados de la encuesta del Barómetro de las Américas (AB) del Latin American Public Opinion Project (LAPOP). Si bien estos sondeos de opinión pública no responden a esta interrogante específica, sí nos permite saber el porcentaje anual de ecuatorianos que pagaron sobornos en escuelas o colegios desde el 2004 hasta el 2019. Con esta información, podemos hacer un análisis aproximado sobre la corrupción en procesos universitarios.
+
+```{r}
+knitr::include_graphics('figures/grafico_pago_coimas.png')
+```
+
+Con un porcentaje del 9.2%, el año donde hubo el menor pago de coimas en planteles educativos fue en el 2014, el mismo año donde el ENES se volvió obligatorio para todos los estudiantes. Cabe mencionar que, según el Centro Interuniversitario de Desarrollo, en este año también hubo una reducción de alrededor de 2 puntos y medio sobre la tasa bruta de matrícula universitaria en el 2014 comparado con el año previo (Ponce, 2016). Estos dos hechos, la disminución de la corrupción en colegios y la implementación universal del ENES, podrían estar relacionadas. Como cualquier política aplicada recientemente, el examen de acceso a universidades públicas y sus cupos fueron respetados tanto por funcionarios públicos como por los estudiantes, es decir, el nuevo sistema no fue corrupto el año en el que se instauró. Esto se evidencia con el hecho de que, efectivamente, menos estudiantes lograron entrar a universidades públicas. 
+
+Sin embargo, en el último periodo de la encuesta, el 2019, podemos ver que el pago de sobornos en colegios ha aumentado en gran medida. ¿Por qué? Porque a partir del año 2017 se aplica el examen unificado. Recordemos que este examen Ser Bachiller no solo permitía el acceso a universidades públicas, también decidía si el estudiante se graduaba del colegio o no. Esto explica porqué el 22% de ecuatorianos pagó sobornos en colegios, lo cual también refleja la propensión que hay en el país a pagar coimas en institutos superiores para obtener un cupo.
+
+```{r}
+knitr::include_graphics('figures/grafico_pago_coimas_justificable.png')
+```
+Estas conclusiones son respaldadas con la opinión pública acerca del pago de coimas y su justificación. Los resultados de ambas preguntas siguen la misma tendencia en los periodos analizados, pues con un 13.6%, el 2014 también fue el año en el que menos personas consideraron que pagar sobornos es justificable. De nuevo, el mismo año en el que se declara la obligatoriedad del ENES. Una vez más, la encuesta en el 2019 presenta un elevado resultado, pues 1 de cada 4 ecuatorianos creyeron que como estaba la situación, a veces sí se justificaba pagar sobornos. ¿Y cómo estaba la situación respecto a la educación en ese año? Con un examen con doble funcionalidad. 
+
+# Proyecciones para el futuro
+
+Este año se estará aplicando (de nuevo) el acceso a la educación superior pública de acuerdo a los procedimientos de admisión propios de cada universidad. Pero, ¿qué sugieren los datos? Según el presente análisis, la existencia de un examen que permita la asignación de un cupo en instituciones educativas públicas sí redujo los niveles de corrupción en esta área. No obstante, cuando la evaluación se convirtió en un examen unificado, la situación cambió. La corrupción en el acceso a la educación superior pública incrementó, una parte significativa de la población ecuatoriana consideraba que pagar sobornos era justificable y, activamente, pagaban coimas en planteles educativos. Esto nos dice que si la corrupción no disminuyó cuando las admisiones a la educación superior pública eran controladas por el gobierno central con el examen del Ser Bachiller, la situación actual es aún menos esperanzadora. Ahora, los ecuatorianos tendrán un acercamiento más personal con los funcionarios de universidades públicas, por lo que es más fácil que se den casos de corrupción para obtener un cupo.  
+
+# Referencias
