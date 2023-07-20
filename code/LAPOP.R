@@ -44,6 +44,38 @@ theme_article_educacion <-
         plot.caption = element_text(color = "grey30", hjust = 0, face = 'italic'),
         legend.background = element_blank())
 
+# Estudiantes que rindieron un examen para ingresar a la universidad
+df_estudiantes <- data.frame(Año = c(2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020),
+                             Postulantes = c(145100, 170000, 257500, 296185, 306000, 365000, 292000, 225500, 169000))
+caption_graph0<-
+  'Las cifras representan el número aproximado de personas que rindieron un examen de ingreso centralizado desde el año 2012 hasta el 2020. 
+  Fuente: Subsecretaría de Acceso a la Educación Superior. El Comercio, https://www.elcomercio.com/tendencias/sociedad/evaluacion-bachiller-educacion-superior.html'
+
+graph0 <- 
+  ggplot(df_estudiantes, aes(x = as.factor(Año), y = Postulantes, fill = as.factor(Año))) + 
+  geom_col(fill = "#647A8F",
+           linewidth = 0.7,
+           width = 0.5) +
+  geom_text(aes(label = Postulantes),
+            size = 4,
+            vjust = -2) +
+  scale_y_continuous(limits = c(0, 400000), labels = scales::comma_format(1e+05)) +
+  labs(x = '',
+       y = '',
+       title = 'Número de estudiantes que rindieron un examen de ingreso entre 2012 y 2020',
+       
+       caption = str_wrap(caption_graph0, 160)) +
+  guides(fill = F) +
+  theme_article_educacion +
+  theme(plot.title = element_text(face = 'bold'),
+        plot.caption = element_text(size = 8)); graph0
+
+ggsave("figures/grafico_postulantes.png",plot = graph0, 
+       device = "png", 
+       width = 10, 
+       height = 6, 
+       dpi = 1200)
+
 # Graph de exc16
 caption_graph1<-
   'Las cifras representan el % de personas que pagaron coimas en planteles educativos en los últimos 12 meses, donde 0 significa que no hubo pago de sobornos y 1 que sí lo hubo. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. 
