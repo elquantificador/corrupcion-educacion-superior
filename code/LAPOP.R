@@ -2,25 +2,23 @@
 # 2004-2019
 
 # Cargar librerías
-library(tidyverse)
-library(dplyr)
-library(ggplot2)
+if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
+if(!require(survey)) install.packages("survey", repos = "http://cran.us.r-project.org")
+if(!require(dplyr)) install.packages("dplyr", repos = "http://cran.us.r-project.org")
+if(!require(ggplot2)) install.packages("ggplot2", repos = "http://cran.us.r-project.org")
 if(!require(here)) install.packages("here", repos = "http://cran.us.r-project.org")
 
 # Cargar datos
-
 url <- "https://raw.githubusercontent.com/laboratoriolide/americas-barometer/main/output/csv/ab_04_09.csv"
 download.file(url, here("data/ab_04_19.csv"))
 df <- read.csv("data/ab_04_19.csv")
 
 # Limpieza de datos de exc16
-
 df$exc16 <- factor(df$exc16)  
 df$exc16 <- ifelse(df$exc16 == 'Yes' | df$exc16 == 'Si' | df$exc16 == 'Sí' , 1,
                 ifelse(df$exc16 == 'No', 0, NA))
 
-# Diseño Muestral
-
+# Diseño Muestral de exc16
 dm <- svydesign(ids = ~ upm,
           strata = ~ estratopri, 
           weights = ~ weight1500, 
@@ -37,7 +35,6 @@ exc16_tab <- svyby(formula = ~exc16,
                    keep.names = F)
 
 # Tema para gráficos de ggplot2
-
 theme_article_educacion <-
   theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
@@ -45,40 +42,6 @@ theme_article_educacion <-
         plot.subtitle = element_text(color = "grey30"),
         plot.caption = element_text(color = "grey30", hjust = 0, face = 'italic'),
         legend.background = element_blank())
-
-# Estudiantes que rindieron un examen para ingresar a la universidad
-
-df_estudiantes <- data.frame(Año = c(2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020),
-                             Postulantes = c(145100, 170000, 257500, 296185, 306000, 365000, 292000, 225500, 169000))
-
-caption_graph0<-
-  'Las cifras representan el número aproximado de personas que rindieron un examen de ingreso centralizado desde el año 2012 hasta el 2020. 
-  Fuente: Subsecretaría de Acceso a la Educación Superior. El Comercio, https://www.elcomercio.com/tendencias/sociedad/evaluacion-bachiller-educacion-superior.html'
-
-graph0 <- 
-  ggplot(df_estudiantes, aes(x = as.factor(Año), y = Postulantes, fill = as.factor(Año))) + 
-  geom_col(fill = "#647A8F",
-           linewidth = 0.7,
-           width = 0.5) +
-  geom_text(aes(label = Postulantes),
-            size = 4,
-            vjust = -2) +
-  scale_y_continuous(limits = c(0, 400000), labels = scales::comma_format(1e+05)) +
-  labs(x = '',
-       y = '',
-       title = 'Número de estudiantes que rindieron un examen de ingreso entre 2012 y 2020',
-       
-       caption = str_wrap(caption_graph0, 160)) +
-  guides(fill = F) +
-  theme_article_educacion +
-  theme(plot.title = element_text(face = 'bold'),
-        plot.caption = element_text(size = 8)); graph0
-
-ggsave("figures/grafico_postulantes.png",plot = graph0, 
-       device = "png", 
-       width = 10, 
-       height = 6, 
-       dpi = 1200)
 
 # Graph de exc16
 caption_graph1<-
