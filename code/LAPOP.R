@@ -9,13 +9,18 @@ if(!require(ggplot2)) install.packages("ggplot2", repos = "http://cran.us.r-proj
 if(!require(here)) install.packages("here", repos = "http://cran.us.r-project.org")
 
 # Cargar datos
+
 url <- "https://raw.githubusercontent.com/laboratoriolide/americas-barometer/main/output/csv/ab_04_09.csv"
+
 download.file(url, here("data/ab_04_19.csv"))
+
 df <- read.csv("data/ab_04_19.csv")
 
 # Limpieza de datos de exc16
-df$exc16 <- factor(df$exc16)  
-df$exc16 <- ifelse(df$exc16 == 'Yes' | df$exc16 == 'Si' | df$exc16 == 'Sí' , 1,
+
+df$exc16 <- factor(df$exc16)
+
+df$exc16 <- ifelse(df$exc16 == 'Yes' | df$exc16 == 'Si' | df$exc16 == 'Sí' | df$exc16 == 'S\xed', 1,
                 ifelse(df$exc16 == 'No', 0, NA))
 
 # Diseño Muestral de exc16
@@ -27,8 +32,8 @@ dm <- svydesign(ids = ~ upm,
           data = df)
 
 # Tabulación con pesos de muestra exc16
-exc16_tab <- svyby(formula = ~exc16, 
-                   by = ~year, 
+exc16_tab <- svyby(formula = ~ exc16, 
+                   by = ~ year, 
                    design = dm,
                    FUN = svymean,
                    na.rm = T,
@@ -49,7 +54,7 @@ caption_graph1<-
   Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
 graph1 <- 
-  ggplot(exc16_tab, aes(x = as.factor(year), y = exc16, fill = as.factor(year))) + 
+  ggplot(exc16_tab, aes(x = as.factor(year), y = exc16)) + 
   geom_col(fill = "#647A8F",
            linewidth = 0.7,
            width = 0.5) + 
@@ -59,16 +64,19 @@ graph1 <-
   geom_text(aes(label = scales::percent(exc16, accuracy = 0.1)),
             size = 4,
             vjust = -6.5) +
-  scale_y_continuous(limits = c(0, 0.3)) +
+  scale_y_continuous(limits = c(0, 0.3),
+                     breaks = c(0, 0.1, 0.2, 0.3),
+                     labels = c('0', '10', '20', '30')) +
+  geom_vline(xintercept = 4.5, linetype = 'dotted', colour = '#FFAC8E') +
+  annotate('label', x = 4.3, y = 0.245, label = '2011: se establece \n examen ENES', size = 3.5)+ 
   labs(x = '',
        y = '',
        title = 'Pago de coimas en planteles educativos en Ecuador',
        subtitle = 'En los últimos 12 meses, ¿tuvo que pagar alguna coima/soborno en la escuela o colegio?',
        caption = str_wrap(caption_graph1, 175)) +
-  guides(fill = F) +
   theme_article_educacion +
   theme(plot.title = element_text(face = 'bold'),
-        plot.caption = element_text(size = 8)); graph1
+        plot.caption = element_text(size = 8))
 
 ggsave("figures/grafico_pago_coimas.png",plot = graph1, 
        device = "png", 
