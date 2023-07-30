@@ -55,7 +55,7 @@ caption_graph1<-
 
 graph1 <- 
   ggplot(exc16_tab, aes(x = as.factor(year), y = exc16)) + 
-  geom_col(fill = "#647A8F",
+  geom_col(fill = "#2E5994",
            linewidth = 0.7,
            width = 0.5) + 
   geom_errorbar(aes(ymin = exc16 - 1.96*se,
@@ -98,7 +98,7 @@ caption_graph2<-
 
 graph2 <- 
   ggplot(ctol_tab, aes(x = as.factor(year), y = ctol, fill = as.factor(year))) + 
-  geom_col(fill = "#647A8F",
+  geom_col(fill = "#2E5994",
            linewidth = 0.7,
            width = 0.5) + 
   geom_errorbar(aes(ymin = ctol - 1.96*se,
