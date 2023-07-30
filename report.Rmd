@@ -4,8 +4,8 @@ title: 'Libre acceso vs. SENESCYT: Corrupción y acceso a la educación superior
 author: "Romina Estévez"
 date: "2023-07-31"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 bibliography: refs.bib
 csl: style.csl
 ---
@@ -65,6 +65,6 @@ Este año se estará aplicando (de nuevo) el acceso a la educación superior pú
 
 3. A partir del 2016, existe un considerable aumento de la corrupción en la educación, lo que coincide con un incremento significativo de la propensión a tolerar sobornos. Esto señala que es quizás la tolerancia a la corrupción, y no el esquema de ingreso a la universidad, lo que lidera el pago de sobornos en ámbitos educativos.
 
-Tomando en cuenta esta información, la conclusión principal es que no se puede llegar a una deducción terminante sobre la influencia del sistema de ingreso a la universidad y la corrupción en el acceso a la educación superior, puesto que hay varios factores que afectan esta problemática. Aunque los datos analizados aquí no observan de forma exacta la corrupción en el otorgamiento de cupos a nivel universitario, el pago de sobornos en colegios y escuelas nos permiten entender la forma en la que los ecuatorianos se comportarían en el ámbito universitario. El análisis presente y la literatura económica sugiere que, sin importar los cambios en política pública educativa, los sobornos e injusticias para entrar a la universidad persistirán si es que la población tolera a la corrupción en cualquier ámbito cuando las circunstancias lo justifiquen. Las elecciones anticipadas de agosto 2023 pondrán a prueba a los candidatos y sus actitudes hacia el sistema educativo, sin embargo, a juzgar por lo que los datos pueden decir, será más importante la actitud general de los aspirantes a la corrupción que su posición política respecto al sistema de ingreso a la universidad.
+Si bien el análisis no nos permite conocer con exactitud lo que sucederá con el sistema actual, la información presente nos permite llegar a importantes predicciones de lo que puede suceder en el futuro. Aunque los datos analizados aquí no observan de forma exacta la corrupción en el otorgamiento de cupos a nivel universitario, el pago de sobornos en colegios y escuelas nos permiten entender la forma en la que los ecuatorianos se comportarían en el ámbito universitario. El análisis presente y la literatura económica sugiere que, sin importar los cambios en política pública educativa, los sobornos e injusticias para entrar a la universidad persistirán si es que la población tolera a la corrupción en cualquier ámbito cuando las circunstancias lo justifiquen. Las elecciones anticipadas de agosto 2023 pondrán a prueba a los candidatos y sus actitudes hacia el sistema educativo, sin embargo, a juzgar por lo que los datos pueden decir, será más importante la actitud general de los aspirantes a la corrupción que su posición política respecto al sistema de ingreso a la universidad.
 
 # Referencias
