@@ -116,7 +116,9 @@ graph2 <-
   geom_text(aes(label = scales::percent(ctol, accuracy = 0.1)),
             size = 4,
             vjust = -4) +
-  scale_y_continuous(limits = c(0, 0.3)) +
+  scale_y_continuous(limits = c(0, 0.3),
+                     breaks = c(0, 0.1, 0.2, 0.3),
+                     labels = c('0', '10', '20', '30')) +
   labs(x = '',
        y = '',
        title = 'Pagar coimas es justificable',
