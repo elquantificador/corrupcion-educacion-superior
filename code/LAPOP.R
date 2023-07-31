@@ -39,6 +39,13 @@ exc16_tab <- svyby(formula = ~ exc16,
                    na.rm = T,
                    keep.names = F)
 
+# Agregar colores diferentes antes y después
+
+exc16_tab <-
+  exc16_tab %>% 
+  mutate(colors = if_else(year >= 2012, '#2E5994', '#7bd9f2'))
+
+
 # Tema para gráficos de ggplot2
 theme_article_educacion <-
   theme_classic(base_size = 14) +
@@ -54,21 +61,22 @@ caption_graph1<-
   Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
 graph1 <- 
-  ggplot(exc16_tab, aes(x = as.factor(year), y = exc16)) + 
-  geom_col(fill = "#2E5994",
-           linewidth = 0.7,
+  ggplot(exc16_tab, aes(x = as.factor(year), y = exc16, fill = as.factor(colors))) + 
+  geom_col(linewidth = 0.7,
            width = 0.5) + 
+  scale_fill_manual(values = c('#2E5994', '#7bd9f2')) +
   geom_errorbar(aes(ymin = exc16 - 1.96*se,
                     ymax = exc16 + 1.96*se),
                 width = 0.3)+
   geom_text(aes(label = scales::percent(exc16, accuracy = 0.1)),
             size = 4,
-            vjust = -6.5) +
+            vjust = -6.5) + 
   scale_y_continuous(limits = c(0, 0.3),
                      breaks = c(0, 0.1, 0.2, 0.3),
                      labels = c('0', '10', '20', '30')) +
   geom_vline(xintercept = 4.5, linetype = 'dotted', colour = '#FFAC8E') +
   annotate('label', x = 4.3, y = 0.245, label = '2011: se establece \n examen ENES', size = 3.5)+ 
+  guides(fill = 'none') +
   labs(x = '',
        y = '',
        title = 'Pago de coimas en planteles educativos en Ecuador',
@@ -91,6 +99,7 @@ ctol_tab <- svyby(formula = ~ctol,
                    FUN = svymean,
                    na.rm = T,
                    keep.names = F)
+
 # Graph de ctol
 caption_graph2<-
   'Las cifras representan el % de personas que consideran que a veces el pago de sobornos es justificable, donde 0 significa que no justifica y 1 que sí lo hace. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. 
