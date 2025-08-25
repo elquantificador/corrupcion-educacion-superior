@@ -8,4 +8,4 @@ Se tienen dos opciones para replicar el análisis:
 
 2. Descargar un archivo comprimido desde la página web del repositorio y ejecutar los scripts.
 
-Para más información, consulta el [perfil de GitHub de la autora](https://github.com/RomiEstevez)
+Para más información, consulta el [perfil de GitHub de la autora](https://github.com/RomiEstevez).
