@@ -2,18 +2,13 @@
 
 Este repositorio almacena todos los archivos necesarios para el análisis de la corrupción en el acceso a la educación superior en Ecuador utilizando la encuesta de LAPOP.
 
-## Estructura del repositorio
+# Requisitos
 
-- `code/`: Scripts de R para análisis de datos
-- `data/`: Archivos de datos
-- `figures/`: Gráficos generados por los análisis
-- `report/`: Informe en R Markdown y archivos relacionados
-  - `report.Rmd`: Documento principal del informe
-  - `refs.bib`: Referencias bibliográficas
-  - `style.csl`: Estilo de citas
-  - `report.html` y `report.docx`: Versiones compiladas del informe
+- R (se recomienda usar RStudio).
+- Paquetes de R que se instalarán automáticamente al ejecutar los scripts.
+- Opcionalmente LaTeX para compilar el artículo en PDF.
 
-## Replicación del análisis
+# Como ejecutar el análisis
 
 Se tienen dos opciones para replicar el análisis:
 
@@ -21,4 +16,4 @@ Se tienen dos opciones para replicar el análisis:
 
 2. Descargar un archivo comprimido desde la página web del repositorio y ejecutar los scripts.
 
-Para más información, consulta el [perfil de GitHub de la autora](https://github.com/RomiEstevez)
+Para más información, consulta el [perfil de GitHub de la autora](https://github.com/RomiEstevez).
