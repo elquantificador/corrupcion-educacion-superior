@@ -86,7 +86,7 @@ graph1 <-
   theme(plot.title = element_text(face = 'bold'),
         plot.caption = element_text(size = 8))
 
-ggsave("../report/figures/grafico_pago_coimas.png",plot = graph1, 
+ggsave("../figures/grafico_pago_coimas.png",plot = graph1, 
        device = "png", 
        width = 10, 
        height = 6, 
@@ -129,7 +129,7 @@ graph2 <-
   theme(plot.title = element_text(face = 'bold'),
         plot.caption = element_text(size = 8)); graph2
 
-ggsave("../report/figures/grafico_pago_coimas_justificable.png",plot = graph2, 
+ggsave("../figures/grafico_pago_coimas_justificable.png",plot = graph2, 
        device = "png", 
        width = 10, 
        height = 6, 
