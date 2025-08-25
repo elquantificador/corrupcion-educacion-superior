@@ -36,7 +36,7 @@ Para responder esta pregunta se puede utilizar los resultados de la encuesta del
 El gráfico a continuación contempla el porcentaje de personas que pagaron una coima o soborno en la escuela o colegio. El análisis de esta pregunta es útil para conocer cuál es la propensión del ecuatoriano promedio a cometer o aceptar actos de corrupción en la obtención de cupos para el sistema de educación superior.
 
 ```{r}
-knitr::include_graphics('figures/grafico_pago_coimas.png')
+knitr::include_graphics('../figures/grafico_pago_coimas.png')
 ```
 
 Un cambio clave que se puede analizar es aquel entre el 2010 y 2012, tomando en cuenta la implementación del ENES (examen centralizado) en el 2011. Entre estos dos períodos, el pago de coimas en planteles educativos incrementa de forma estadísticamente significativa, llegando casi a duplicarse. Aunque no se conoce si se dio un patrón similar en la corrupción para obtener un cupo en la universidad, es posible que este cambio se haya dado debido a los nuevos incentivos para acceder a la educación superior, tomando en cuenta que el financiamiento para universidades durante el gobierno de turno fue considerable. La incidencia de corrupción en el ámbito educativo se estabilizó en 2014. Con un porcentaje del 9.2%, este fue el año que menos se reportaron pagos a sobornos de acuerdo a esta encuesta, aunque la cifra no es estadísticamente diferente a la de 2010.
@@ -44,7 +44,7 @@ Un cambio clave que se puede analizar es aquel entre el 2010 y 2012, tomando en 
 Sin embargo, en los últimos periodos de la encuesta podemos ver que el pago de sobornos en colegios aumentó en gran medida. Asumiendo que observamos una incidencia de corrupción similar en procesos universitarios, este incremento en corrupción podría explicarse por el establecimiento del examen Ser Bachiller (unificado) en el año 2017. Recordemos que esta evaluación no solo permitía el acceso a universidades públicas, también decidía si el estudiante se gradúa del colegio o no. Un examen con doble propósito como el Ser Bachiller puede haber causado gran desasosiego en la población de estudiantes, lo que podría explicar que un 22% de ecuatorianos pagó sobornos en colegios. Los estudiantes tenían más incentivos para pagar coimas: ingresar a universidades y, más importante aún, graduarse del colegio, lo cual también podría reflejar la propensión que hay en el país a pagar sobornos en institutos superiores para obtener un cupo. 
 
 ```{r}
-knitr::include_graphics('figures/grafico_pago_coimas_justificable.png')
+knitr::include_graphics('../figures/grafico_pago_coimas_justificable.png')
 ```
 
 El problema de la corrupción es uno muy prevalente en el Ecuador, no solamente en educación. El gráfico de arriba nos muestra la propensión a justificar un soborno, y, como se puede ver, esta predisposición es relativamente alta. De hecho, Ecuador se encuentra entre los países más tolerantes a la corrupción de la región [@vintimilla_ecuador_2020]. Esto podría representar un problema grave ahora que el examen unificado se ha eliminado, puesto que si la propensión a justificar la corrupción es alta, la incidencia de la misma también lo podría ser. Es decir, en caso de que la tendencia se mantenga, se puede predecir que la corrupción aumentará aún más.
