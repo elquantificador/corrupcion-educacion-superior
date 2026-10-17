@@ -38,9 +38,10 @@ son las personas encuestadas, con cobertura nacional.
 
 | Fuente | Institución | Periodo | Acceso | Script |
 |---|---|---|---|---|
-| Barómetro de las Américas (AmericasBarometer), Ecuador | LAPOP (Latin American Public Opinion Project, Vanderbilt University), www.LapopSurveys.org | Rondas 2004, 2006, 2008, 2010, 2012, 2014, 2016 y 2019 | Descarga automática de un CSV consolidado desde el repositorio `laboratoriolide/americas-barometer` en GitHub; una copia queda en `data/ab_04_19.csv` | `code/LAPOP.R` |
+| Barómetro de las Américas (AmericasBarometer), Ecuador | LAPOP (Latin American Public Opinion Project, Vanderbilt University), www.LapopSurveys.org | Rondas 2004, 2006, 2008, 2010, 2012, 2014, 2016 y 2019 | Copia local en `data/ab_04_19.csv`; si falta, el script la descarga desde el repositorio `laboratoriolide/americas-barometer` en GitHub | `code/LAPOP.R` |
 
-El CSV descargado es una compilación de LIDE de las bases públicas de LAPOP. Los
+El archivo remoto se llama `ab_04_09.csv`, pero contiene las rondas 2004 a 2019
+(verificado). El CSV es una compilación de LIDE de las bases públicas de LAPOP. Los
 términos de uso de los datos originales los fija LAPOP (ver `DATA-NOTICE.md`).
 
 ## Salidas
@@ -62,15 +63,12 @@ descargar el repositorio y ejecutar los scripts; el orden siguiente se deduce de
 los archivos:
 
 1. Clona o descarga el repositorio y ábrelo con `corrupcion-educacion-superior.Rproj`.
-2. Ejecuta `code/LAPOP.R`. Descarga el CSV de LAPOP a `data/ab_04_19.csv`
-   (si ya existe, se sobrescribe), declara el diseño muestral (UPM
+2. Ejecuta `code/LAPOP.R` con la raíz del repositorio como directorio de
+   trabajo. Lee `data/ab_04_19.csv` (si falta, lo descarga), declara el diseño muestral (UPM
    `upm`, estrato `estratopri`, ponderador `weight1500`), estima por año las
-   variables `exc16` y `ctol` y guarda dos figuras en `figures/`. Requiere
-   internet.
-3. Verifica la ruta de trabajo: el script lee con `data/ab_04_19.csv` (relativa
-   a la raíz del proyecto) pero guarda con `../figures/` (relativa a `code/`).
-   Ajusta una de las dos rutas según el directorio desde el que lo ejecutes.
-4. Renderiza `report/report.Rmd` (Word o HTML) para regenerar el texto. Inserta
+   variables `exc16` y `ctol` y guarda dos figuras en `figures/` (crea la
+   carpeta si no existe). Todas las rutas son relativas a la raíz.
+3. Renderiza `report/report.Rmd` (Word o HTML) para regenerar el texto. Inserta
    las figuras de `figures/` y toma las referencias de `report/refs.bib` y
    `report/style.csl`.
 
