@@ -17,3 +17,17 @@ Se tienen dos opciones para replicar el análisis:
 2. Descargar un archivo comprimido desde la página web del repositorio y ejecutar los scripts.
 
 Para más información, consulta el [perfil de GitHub de la autora](https://github.com/RomiEstevez).
+
+
+## Licencias y cómo citar
+
+- **Código:** [MIT](LICENSE).
+- **Texto, figuras y tablas:** [CC BY-NC 4.0](LICENSE-content).
+- **Datos de terceros:** conservan los términos de su fuente
+  ([aviso](DATA-NOTICE.md)).
+- **Nombre y logotipos:** todos los derechos reservados.
+
+Las cifras y resultados pueden citarse libremente. Menciona a los autores y a
+El Quantificador (LIDE) y enlaza la publicación original. Los usos comerciales
+de gráficos, tablas o texto requieren autorización previa:
+elquantificador@laboratoriolide.org. Ver también `CITATION.cff`.
