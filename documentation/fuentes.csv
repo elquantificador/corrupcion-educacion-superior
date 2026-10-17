@@ -1,0 +1,2 @@
+source_name,institution,period,official_url,downloaded_file,script
+Barómetro de las Américas (AmericasBarometer) Ecuador,LAPOP Latin American Public Opinion Project (Vanderbilt University),2004-2019,https://www.LapopSurveys.org,data/ab_04_19.csv,code/LAPOP.R

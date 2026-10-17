@@ -8,49 +8,71 @@ repositorios.
 
 - **Título:** Corrupción y acceso a la educación superior pública: ¿centralizar el ingreso a universidades?
 - **Descripción del repositorio:** Artículo del Quantificador sobre corrupción en ámbitos educativos.
-- **Autoría:** [COMPLETAR: nombres, igual que en el sitio]
-- **Fecha de publicación:** [COMPLETAR: AAAA-MM-DD]
-- **Artículo publicado:** [COMPLETAR: enlace a elquantificador.org]
-- **Categoría:** [COMPLETAR: Economía, Política, Salud, Educación o Valores y
-  comportamiento]
-- **Edición:** [COMPLETAR: por ejemplo, Julio-Diciembre 2026]
+- **Autoría:** Romina Estévez
+- **Fecha de publicación:** 2023-07-30
+- **Artículo publicado:** https://elquantificador.org/post/corrupcion/2023-07-30-corrupcion-y-acceso-a-la-educacion-superior-publica-en-ecuador/
+- **Categoría:** Política (el sitio también lo clasifica en Educación y en Valores y comportamiento)
+- **Edición:** Febrero - Agosto 2023
 
 ## Estado
 
-[COMPLETAR: en preparación, en revisión editorial o publicado. Anota qué falta
-para cerrar el artículo.]
+Publicado el 2023-07-30.
 
 ## Pregunta y alcance
 
-[COMPLETAR: dos o tres oraciones con la pregunta, el periodo, la cobertura
-geográfica y la unidad de análisis.]
+El artículo pregunta cómo ha influido el sistema de ingreso a la universidad
+pública (examen centralizado o ingreso descentralizado) en la corrupción en
+ámbitos educativos en Ecuador. Usa las rondas 2004 a 2019 del Barómetro de las
+Américas de LAPOP para estimar, con diseño muestral, el porcentaje de personas
+que pagaron un soborno en escuelas o colegios en los últimos 12 meses y el
+porcentaje que considera justificable pagar un soborno. La unidad de análisis
+son las personas encuestadas, con cobertura nacional.
 
 ## Requisitos
 
-- R [COMPLETAR: versión, por ejemplo 4.5.x].
-- Paquetes de R: [COMPLETAR: lista en orden alfabético].
+- R: no documentada en el repositorio.
+- Paquetes de R: dplyr, ggplot2, here, knitr (para renderizar el `.Rmd`),
+  scales, survey, tidyverse.
 
 ## Fuentes de datos
 
 | Fuente | Institución | Periodo | Acceso | Script |
 |---|---|---|---|---|
-| [COMPLETAR] | [COMPLETAR] | [COMPLETAR] | [COMPLETAR: descarga automática o manual] | `code/cleaning/00_download_fuente.R` |
+| Barómetro de las Américas (AmericasBarometer), Ecuador | LAPOP (Latin American Public Opinion Project, Vanderbilt University), www.LapopSurveys.org | Rondas 2004, 2006, 2008, 2010, 2012, 2014, 2016 y 2019 | Descarga automática de un CSV consolidado desde el repositorio `laboratoriolide/americas-barometer` en GitHub; una copia queda en `data/ab_04_19.csv` | `code/LAPOP.R` |
 
-Si alguna fuente no permite descarga automática, explica aquí cómo obtenerla y
-dónde colocarla en `data/raw/`.
+El CSV descargado es una compilación de LIDE de las bases públicas de LAPOP. Los
+términos de uso de los datos originales los fija LAPOP (ver `DATA-NOTICE.md`).
 
 ## Salidas
 
-- `outputs/tables/[COMPLETAR].csv`: [COMPLETAR: qué contiene].
-- `outputs/graphs/[COMPLETAR].png`: [COMPLETAR: qué muestra].
-- `article/images/graficoN.png`: copias numeradas según el orden del texto.
+- `figures/grafico_pago_coimas.png`: porcentaje de personas que pagaron coimas
+  en planteles educativos en los últimos 12 meses, por ronda, con intervalos de
+  confianza del 95 %.
+- `figures/grafico_pago_coimas_justificable.png`: porcentaje de personas que
+  consideran justificable pagar un soborno, por ronda.
+- `figures/grafico_postulantes.png`: figura presente en el repositorio; ningún
+  script ni el `.Rmd` la genera o la cita.
+- `report/report.docx` y `report/report.html`: versiones renderizadas de
+  `report/report.Rmd`.
 
 ## Cómo replicar en este repositorio
 
-Este repositorio conserva sus instrucciones originales en la sección
-"README anterior". Si todavía no tiene `MASTER.R`, sigue esas instrucciones.
-Cuando se migre a la estructura estándar, reemplaza esta sección por los pasos
-de `MASTER.R`.
+Este repositorio no tiene `MASTER.R`. El README anterior solo indica clonar o
+descargar el repositorio y ejecutar los scripts; el orden siguiente se deduce de
+los archivos:
+
+1. Clona o descarga el repositorio y ábrelo con `corrupcion-educacion-superior.Rproj`.
+2. Ejecuta `code/LAPOP.R`. Descarga el CSV de LAPOP a `data/ab_04_19.csv`
+   (si ya existe, se sobrescribe), declara el diseño muestral (UPM
+   `upm`, estrato `estratopri`, ponderador `weight1500`), estima por año las
+   variables `exc16` y `ctol` y guarda dos figuras en `figures/`. Requiere
+   internet.
+3. Verifica la ruta de trabajo: el script lee con `data/ab_04_19.csv` (relativa
+   a la raíz del proyecto) pero guarda con `../figures/` (relativa a `code/`).
+   Ajusta una de las dos rutas según el directorio desde el que lo ejecutes.
+4. Renderiza `report/report.Rmd` (Word o HTML) para regenerar el texto. Inserta
+   las figuras de `figures/` y toma las referencias de `report/refs.bib` y
+   `report/style.csl`.
 
 ## README anterior
 
